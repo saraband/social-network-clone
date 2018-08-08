@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
-  background-color: red;
+  background-color: blue;
   color: white;
+  font-size: 20px;
 `
 
 export default class App extends Component {
