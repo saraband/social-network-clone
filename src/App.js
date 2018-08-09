@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-
-const StyledApp = styled.div`
-  background-color: blue;
-  color: white;
-  font-size: 20px;
-`
+import {
+  Route,
+  Switch
+} from 'react-router-dom'
+import {
+  PROFILE,
+  NEWS_FEED
+} from 'ROUTES'
+import Layout from 'LAYOUT'
+import Profile from 'PAGES/Profile'
+import NewsFeed from 'PAGES/NewsFeed'
+import NotFound404 from 'PAGES/NotFound404'
 
 export default class App extends Component {
   render() {
     return(
-      <StyledApp>
-        <h1>Hello World</h1>
-      </StyledApp>
+      <Layout>
+        <Switch>
+          <Route exact path={PROFILE} component={Profile} />
+          <Route exact path={NEWS_FEED} component={NewsFeed} />
+          <Route component={NotFound404} />
+        </Switch>
+      </Layout>
     )
   }
 }
