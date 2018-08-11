@@ -11,9 +11,16 @@ import Layout from 'LAYOUT'
 import Profile from 'PAGES/Profile'
 import NewsFeed from 'PAGES/NewsFeed'
 import NotFound404 from 'PAGES/NotFound404'
+import Login from 'PAGES/Login'
+
+const isConnected = true
 
 export default class App extends Component {
   render() {
+    if(!isConnected)
+      return <Login />
+
+
     return(
       <Layout>
         <Switch>

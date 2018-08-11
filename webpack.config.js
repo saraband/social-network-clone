@@ -24,7 +24,8 @@ module.exports = {
       LAYOUT: path.resolve(__dirname, 'src/browser/layout/'),
       MISC: path.resolve(__dirname, 'src/browser/misc/'),
       ROUTES: path.resolve(__dirname, 'src/browser/routes/'),
-      PAGES: path.resolve(__dirname, 'src/browser/pages/')
+      PAGES: path.resolve(__dirname, 'src/browser/pages/'),
+      ICONS: path.resolve(__dirname, 'src/browser/icons/')
     }
   },
   module: {

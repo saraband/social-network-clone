@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import Input from 'COMPONENTS/Form/Input'
 
 const StyledNewsFeed = styled.div`
   margin: auto;
@@ -16,18 +17,7 @@ export default class Profile extends Component {
     return(
       <StyledNewsFeed>
         <p>News Feed</p>
-        <Query query={gql`
-          {
-            hello
-          }
-        `}>
-          {({ loading, error, data }) => {
-            if(loading) return <p>Loading...</p>
-            if(error) return <p>Error !</p>
-
-            return <p>{data.hello}</p>
-          }}
-        </Query>
+        <Input />
       </StyledNewsFeed>
     )
   }

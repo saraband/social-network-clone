@@ -1,11 +1,12 @@
 import express from 'express'
-import chalk from 'chalk'
-import moment from 'moment'
 import path from 'path'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import graphqlHTTP from 'express-graphql'
 import { buildSchema } from 'graphql'
+import log from './log'
+import client from './pgclient'
+import morgan from 'morgan'
 
 const schema = buildSchema(`
   type Query {
@@ -17,23 +18,15 @@ const rootValue = {
   hello: () => 'Hello Apollo :)'
 }
 
-const log = (message) => {
-  console.log(
-    chalk.white.bgGreen(` ${moment(Date.now()).format('LT')} `) +
-    chalk.green(` Server: ${message}.`))
-}
-
 const app = express()
 
+// Logging
+app.use(morgan('tiny'))
+
+// Others middlewares
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, '../../dist')))
 app.use(bodyParser.json())
-
-// Logging
-app.use((req, res, next) => {
-  log(`Requested ${req.path}`)
-  next()
-})
 
 // GraphQL
 app.use('/graphql', graphqlHTTP({
@@ -47,8 +40,15 @@ app.get('/test', (req, res) => {
   res.end('Hello world')
 })
 
-app.listen(9000)
+process.on('SIGINT', () => {
+  client.end().then(() => {
+    log.db('Bye bye :(')
+  })
+})
 
-console.log('\n\n')
-log('Listening on port 9000')
-console.log('\n\n')
+client.connect().then(() => {
+  app.listen(9000)
+  console.log('\n\n')
+  log.db('Connected on port 4532')
+  log.server('Listening on port 9000')
+})
