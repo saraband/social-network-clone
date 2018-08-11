@@ -2,53 +2,34 @@ import express from 'express'
 import path from 'path'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import graphqlHTTP from 'express-graphql'
-import { buildSchema } from 'graphql'
-import log from './log'
-import client from './pgclient'
+import graphQLHttp from 'express-graphql'
 import morgan from 'morgan'
-
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`)
-
-const rootValue = {
-  hello: () => 'Hello Apollo :)'
-}
+import schema from './schema'
+import log from './log'
 
 const app = express()
 
-// Logging
-app.use(morgan('tiny'))
-
-// Others middlewares
+/* GRAPHQL */
 app.use(cors())
-app.use(express.static(path.resolve(__dirname, '../../dist')))
-app.use(bodyParser.json())
-
-// GraphQL
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', graphQLHttp({
   schema,
-  rootValue,
+  pretty: true,
   graphiql: true
 }))
 
+/* LOGGING */
+app.use(morgan('tiny'))
+
+/* OTHERS MIDDLEWARES */
+app.use(express.static(path.resolve(__dirname, '../../dist')))
+app.use(bodyParser.json())
+
+/* TEST */
 app.get('/test', (req, res) => {
   res.setHeader('Content-Type', 'text/plain')
-  res.end('Hello world')
+  res.end('This is a test')
 })
 
-process.on('SIGINT', () => {
-  client.end().then(() => {
-    log.db('Bye bye :(')
-  })
-})
-
-client.connect().then(() => {
-  app.listen(9000)
-  console.log('\n\n')
-  log.db('Connected on port 4532')
-  log.server('Listening on port 9000')
+app.listen(3000, () => {
+  log.server('Listening on port 3000')
 })
