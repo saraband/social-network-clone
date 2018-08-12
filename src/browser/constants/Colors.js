@@ -1,5 +1,7 @@
 export default {
   BLUE: '#0074D9',
+  GREY: '#BBBBBB',
+  RED: '#FF4136',
   SILVER: '#DDDDDD',
   LIGHT_GREY: '#E0E0E0',
   BLACK: '#2d3135',

@@ -5,7 +5,7 @@ import COLORS from 'CONSTANTS/Colors'
 
 const StyledInputContainer = styled.div`
   position: relative;
-  width: 200px;
+  height: 30px;
 `
 
 const Label = styled.label`
@@ -14,43 +14,86 @@ const Label = styled.label`
   top: 6px;
   left: 6px;
   transition: all 0.2s ease-in-out;
-  color: ${COLORS.SILVER}
+  color: ${COLORS.GREY}
 `
-const t = 't'
-const StyledInput = styled.input.attrs({
-  type: 'text'
-})`
+const StyledInput = styled.input`
   position: absolute;
   width: 100%;
   border: 0;
   border-bottom: 1px solid ${COLORS.SILVER};
-  font-size: 14px;
-  padding: 6px;
+  font-size: 15px;
+  padding: 10px;
   background-color: transparent;
   z-index: 42;
   
-  &:focus + label {
+  ${props => props.error
+    ? `border-color: ${COLORS.RED};`
+    : ''
+  }
+  
+  ${props => props.empty ? (
+    `
+    &:focus + label {
     top: -14px;
     font-size: 12px;
-  }
+    }
+    ` ) : (
+    `
+    + label {
+      top: -14px;
+      font-size: 12px;
+    }
+    `
+)}
+`
+
+const ErrorLabel = styled.div`
+  position: absolute;
+  top: 100%;
+  margin-top: 15px;
+  font-size: 12px;
+  color: ${COLORS.RED};
 `
 
 export default class Input extends React.PureComponent {
   render() {
     const {
       label,
+      value,
+      name,
+      type,
+      onChange,
+      validate,
+      onErrorLabel,
       ...props
     } = this.props
 
+    const isValid = !value || value && validate && validate(value)
+
     return(
       <StyledInputContainer {...props}>
-        <StyledInput />
+        <StyledInput
+          type={type}
+          empty={!value}
+          error={!isValid}
+          value={value}
+          name={name}
+          onChange={onChange}
+          autoComplete='off'
+          />
         {label && <Label>{label}</Label>}
+        {!isValid && <ErrorLabel>{onErrorLabel}</ErrorLabel>}
       </StyledInputContainer>
     )
   }
 
   static propTypes = {
-    label: PropTypes.string
+    label: PropTypes.string,
+    value: PropTypes.string,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    onChange: PropTypes.func,
+    validate: PropTypes.func,
+    onErrorLabel: PropTypes.string
   }
 }
