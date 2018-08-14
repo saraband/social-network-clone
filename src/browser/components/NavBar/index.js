@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 import { Flex } from 'MISC/Styles'
 import {
-  NEWS_FEED,
+  NEWS_FEED_STATIC,
   PROFILE
 } from 'ROUTES'
 import Logo from 'ICONS/Logo'
@@ -30,14 +30,20 @@ const ProfileSlot = styled.div`
 
 export default class NavBar extends PureComponent {
   render() {
+    const MY_PROFILE = PROFILE({
+      userId: 42
+    })
+
+    console.log(MY_PROFILE)
+
     return(
       <StyledNavBar>
         <Flex align='center'>
           <Logo height={30} />
-          <HomeLink to={NEWS_FEED}>Social Network</HomeLink>
+          <HomeLink to={NEWS_FEED_STATIC}>Social Network</HomeLink>
         </Flex>
         <ProfileSlot>
-          <Link to={PROFILE}>Your profile</Link>
+          <Link to={MY_PROFILE}>Your profile</Link>
         </ProfileSlot>
       </StyledNavBar>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { NEWS_FEED } from 'ROUTES'
+import { NEWS_FEED_STATIC } from 'ROUTES'
 
 const Styled404 = styled.div`
   margin: auto;
@@ -12,6 +12,6 @@ const Styled404 = styled.div`
 export default () => (
   <Styled404>
     <h1>404</h1>
-    <h3>Not found → <Link to={NEWS_FEED}>Home page</Link></h3>
+    <h3>Not found → <Link to={NEWS_FEED_STATIC}>Home page</Link></h3>
   </Styled404>
 )

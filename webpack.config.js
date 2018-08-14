@@ -22,11 +22,12 @@ module.exports = {
     alias: {
       COMPONENTS: path.resolve(__dirname, 'src/browser/components/'),
       CONSTANTS: path.resolve(__dirname, 'src/browser/constants/'),
-      LAYOUT: path.resolve(__dirname, 'src/browser/layout/'),
+      LAYOUTS: path.resolve(__dirname, 'src/browser/layouts/'),
       MISC: path.resolve(__dirname, 'src/browser/misc/'),
       ROUTES: path.resolve(__dirname, 'src/browser/routes/'),
       PAGES: path.resolve(__dirname, 'src/browser/pages/'),
-      ICONS: path.resolve(__dirname, 'src/browser/icons/')
+      ICONS: path.resolve(__dirname, 'src/browser/icons/'),
+      HOCS: path.resolve(__dirname, 'src/browser/hocs/')
     }
   },
   module: {

@@ -1,6 +1,7 @@
 {
   "name": "social-network-clone",
   "version": "0.1.0",
+  "license": "FML",
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.13",
