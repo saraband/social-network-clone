@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+/* STYLES */
 const StyledProfile = styled.div`
   margin: auto;
 `

@@ -1,3 +1,7 @@
+/*
+**  Main navigation bar
+*/
+
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -9,7 +13,8 @@ import {
 } from 'ROUTES'
 import Logo from 'ICONS/Logo'
 
-const StyledNavBar = Flex.extend.attrs({
+/* STYLES */
+const StyledHeader = Flex.extend.attrs({
   justify: 'space-between',
   align: 'center'
 })`
@@ -28,7 +33,7 @@ const ProfileSlot = styled.div`
   
 `
 
-export default class NavBar extends PureComponent {
+export default class Header extends PureComponent {
   render() {
     const MY_PROFILE = PROFILE({
       userId: 42
@@ -37,7 +42,7 @@ export default class NavBar extends PureComponent {
     console.log(MY_PROFILE)
 
     return(
-      <StyledNavBar>
+      <StyledHeader>
         <Flex align='center'>
           <Logo height={30} />
           <HomeLink to={NEWS_FEED_STATIC}>Social Network</HomeLink>
@@ -45,7 +50,7 @@ export default class NavBar extends PureComponent {
         <ProfileSlot>
           <Link to={MY_PROFILE}>Your profile</Link>
         </ProfileSlot>
-      </StyledNavBar>
+      </StyledHeader>
     )
   }
 }

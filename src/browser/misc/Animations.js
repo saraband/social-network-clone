@@ -1,3 +1,7 @@
+/*
+**  Animations used throughout the app
+*/
+
 import { keyframes } from 'styled-components'
 
 export const FadeUp = keyframes`

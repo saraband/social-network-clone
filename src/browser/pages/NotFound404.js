@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { NEWS_FEED_STATIC } from 'ROUTES'
 
+/* STYLES */
 const Styled404 = styled.div`
   margin: auto;
   width: 400px;

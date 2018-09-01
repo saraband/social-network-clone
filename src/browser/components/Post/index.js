@@ -1,8 +1,13 @@
+/*
+**  Post items displayed in the NewsFeed
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 import moment from 'moment'
 
+/* STYLES */
 const Post = styled.div`
   border: 1px solid ${COLORS.LIGHT_GREY};
   border-radius: 2px;

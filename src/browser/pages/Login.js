@@ -7,6 +7,7 @@ import { SIGNUP_STATIC } from 'ROUTES'
 import { Link } from 'react-router-dom'
 import Notification from 'COMPONENTS/Notification'
 
+/* STYLES */
 const StyledLoginPage = Flex.extend`
   flex-direction: column;
   justify-content: center;

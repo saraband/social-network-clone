@@ -1,6 +1,10 @@
+/*
+**  Main layout
+*/
+
 import React from 'react'
 import styled from 'styled-components'
-import NavBar from 'COMPONENTS/NavBar'
+import Header from 'COMPONENTS/Header'
 
 const StyledLayout = styled.div`
   width: 100vw;
@@ -8,7 +12,7 @@ const StyledLayout = styled.div`
 
 export default ({ children }) => (
   <StyledLayout>
-    <NavBar/>
+    <Header />
     {children}
   </StyledLayout>
 )

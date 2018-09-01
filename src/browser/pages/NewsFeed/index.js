@@ -4,8 +4,10 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import COLORS from 'CONSTANTS/Colors'
 import Post from 'COMPONENTS/Post'
-import MyFineDropDown from 'COMPONENTS/DropDowns/MyFineDropDown'
+import Button from 'COMPONENTS/Form/Buttons/PlainButton'
+import Loader from 'COMPONENTS/Loaders/PlainLoader'
 
+/* QUERIES */
 const GET_POSTS_LIST = gql`
   {
     postList {
@@ -20,6 +22,7 @@ const GET_POSTS_LIST = gql`
   }
 `
 
+/* STYLES */
 const StyledNewsFeed = styled.div`
   margin: auto;
   width: 900px;
@@ -30,7 +33,6 @@ export default class Profile extends React.Component {
     return(
       <StyledNewsFeed>
         <h3>News feed</h3>
-        {/*
         <Query query={GET_POSTS_LIST}>
           {({ loading, error, data }) => {
             if(loading) return <p>Loading...</p>
@@ -41,8 +43,6 @@ export default class Profile extends React.Component {
             ))
           }}
         </Query>
-        */}
-        <MyFineDropDown />
       </StyledNewsFeed>
     )
   }

@@ -1,6 +1,11 @@
+/*
+**  Notification modals
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 
+/* STYLES */
 const StyledNotification = styled.div`
   position: fixed;
   z-index: 50;

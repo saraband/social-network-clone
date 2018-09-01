@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 
+/* STYLES */
 const StyledInputContainer = styled.div`
   position: relative;
   height: 30px;
@@ -68,6 +69,8 @@ export default class Input extends React.PureComponent {
       ...props
     } = this.props
 
+    // The input is valid if empty
+    // Or meets the requirement of the validate prop fn
     const isValid = !value || value && validate && validate(value)
 
     return(

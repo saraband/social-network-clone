@@ -14,22 +14,27 @@ import NewsFeed from 'PAGES/NewsFeed'
 import NotFound404 from 'PAGES/NotFound404'
 import Login from 'PAGES/Login'
 import Signup from 'PAGES/Signup'
+import Chat from 'COMPONENTS/Chat'
 
 const isConnected = true
 
 export default class App extends Component {
   render() {
-    if(!isConnected)
+
+    // If not connected, redirects to the login/signup pages
+    if(!isConnected) {
       return (
         <Switch>
-          <Route path={SIGNUP_STATIC} component={Signup} />
-          <Route component={Login} />
+          <Route path={SIGNUP_STATIC} component={Signup}/>
+          <Route component={Login}/>
         </Switch>
       )
+    }
 
-
+    /* MAIN ROUTES */
     return(
       <Layout>
+        <Chat />
         <Switch>
           <Route exact path={PROFILE_STATIC} component={Profile} />
           <Route exact path={NEWS_FEED_STATIC} component={NewsFeed} />

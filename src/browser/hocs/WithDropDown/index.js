@@ -1,8 +1,16 @@
+/*
+**  DropDown HOC
+**  Takes the DropDown component, returns a function
+**  That takes the component to display and finally returns
+**  The generated component prototype
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 import { FadeUp } from 'MISC/Animations'
 
+/* STYLES */
 const DropDownContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -44,6 +52,8 @@ export default DropDownComponent => Component => class extends React.PureCompone
     }
   }
 
+  // Whenever the user clicks anywhere but in the dropdown
+  // Hide it (Blur)
   dropDownEvent = event => {
     if(!this.dropDownRef.contains(event.target))
       this.setState({ toggled: false })

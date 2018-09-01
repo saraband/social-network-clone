@@ -1,3 +1,7 @@
+/*
+**  Pretty logs :]
+*/
+
 import chalk from 'chalk'
 import moment from 'moment'
 

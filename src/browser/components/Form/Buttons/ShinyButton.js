@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 import PropTypes from 'prop-types'
+import Button from 'COMPONENTS/Form/Buttons/PlainButton'
 
+/* STYLES */
 const Background = styled.div`
   position: absolute;
   z-index: 41;
@@ -39,16 +41,12 @@ const Button = styled.button`
     left: 150%;
   }
   
-  &:focus {
-    outline: 0;
-  }
-  
   &:active {
     opacity: 0.8;
   }
 `
 
-export default class PlainButton extends React.PureComponent {
+export default class ShinyButton extends React.PureComponent {
   render() {
     const {
       onClick,

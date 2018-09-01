@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
+/* STYLES */
 const StyledSwitchButton = styled.div.attrs({
   tabIndex: '0'
 })`

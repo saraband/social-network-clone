@@ -4,9 +4,10 @@ import Logo from 'ICONS/Logo'
 import { Flex } from 'MISC/Styles'
 import COLORS from 'CONSTANTS/Colors'
 import Input from 'COMPONENTS/Form/Input'
-import Button from 'COMPONENTS/Form/PlainButton'
-import v from 'CONSTANTS/Validate'
+import Button from 'COMPONENTS/Form/Buttons/PlainButton'
+import v from 'MISC/Validate'
 
+/* STYLES */
 const StyledSignup = Flex.extend`
   flex-direction: column;
   justify-content: center;
@@ -69,6 +70,7 @@ export default class Signup extends React.PureComponent {
   constructor(props) {
     super(props)
 
+    // Form state
     this.state = {
       username: '',
       email: '',
@@ -77,6 +79,8 @@ export default class Signup extends React.PureComponent {
     }
   }
 
+  // Generic state handler
+  // Requires a name attribute to work
   updateInput = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {

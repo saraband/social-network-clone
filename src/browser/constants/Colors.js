@@ -1,5 +1,10 @@
+/*
+**  A bunch of colors
+*/
+
 export default {
   BLUE: '#0074D9',
+  LIGHT_BLUE: '#6cbaff',
   GREY: '#BBBBBB',
   RED: '#FF4136',
   SILVER: '#DDDDDD',

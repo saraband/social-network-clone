@@ -9,6 +9,7 @@ const apolloClient = new ApolloClient({
   uri: 'http://localhost:3000/graphql'
 })
 
+/* APP MOUNTING POINT */
 const render = (App) => {
   ReactDOM.render(
     <ApolloProvider client={apolloClient}>
@@ -22,6 +23,7 @@ const render = (App) => {
 
 render(App)
 
+/* HOT MODULE RELOADING */
 if(module.hot) {
   module.hot.accept('./App', () => {
     render(require('./App'))
