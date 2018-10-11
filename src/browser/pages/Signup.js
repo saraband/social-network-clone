@@ -8,7 +8,7 @@ import Button from 'COMPONENTS/Form/Buttons/PlainButton'
 import v from 'MISC/Validate'
 
 /* STYLES */
-const StyledSignup = Flex.extend`
+const StyledSignup = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled.span`
-  font-weight: 10;
+  font-weight: 100;
   font-size: 20px;
   font-family: 'Open Sans Light';
   color: ${COLORS.GREY};

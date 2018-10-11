@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import Notification from 'COMPONENTS/Notification'
 
 /* STYLES */
-const StyledLoginPage = Flex.extend`
+const StyledLoginPage = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -7,9 +7,11 @@ import {
   PROFILE,
   NEWS_FEED,
   SIGNUP,
+	SETTINGS
 } from 'ROUTES'
 import Layout from 'LAYOUTS'
 import Profile from 'PAGES/Profile'
+import Settings from 'PAGES/Settings'
 import NewsFeed from 'PAGES/NewsFeed'
 import NotFound404 from 'PAGES/NotFound404'
 import Login from 'PAGES/Login'
@@ -36,6 +38,7 @@ export default class App extends Component {
       <Layout>
         <Switch>
           <Route exact path={PROFILE} component={Profile} />
+          <Route exact path={SETTINGS} component={Settings} />
           <Route exact path={NEWS_FEED} component={NewsFeed} />
           <Route component={NotFound404} />
         </Switch>
