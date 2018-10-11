@@ -4,9 +4,9 @@ import {
   Switch
 } from 'react-router-dom'
 import {
-  PROFILE_STATIC,
-  NEWS_FEED_STATIC,
-  SIGNUP_STATIC,
+  PROFILE,
+  NEWS_FEED,
+  SIGNUP,
 } from 'ROUTES'
 import Layout from 'LAYOUTS'
 import Profile from 'PAGES/Profile'
@@ -14,7 +14,6 @@ import NewsFeed from 'PAGES/NewsFeed'
 import NotFound404 from 'PAGES/NotFound404'
 import Login from 'PAGES/Login'
 import Signup from 'PAGES/Signup'
-import Chat from 'COMPONENTS/Chat'
 
 const isConnected = true
 
@@ -25,7 +24,8 @@ export default class App extends Component {
     if(!isConnected) {
       return (
         <Switch>
-          <Route path={SIGNUP_STATIC} component={Signup}/>
+          <Route path={SIGNUP} component={Signup}/>
+          {/* TODO: Put a redirect here */}
           <Route component={Login}/>
         </Switch>
       )
@@ -36,8 +36,8 @@ export default class App extends Component {
       <Layout>
         <Chat />
         <Switch>
-          <Route exact path={PROFILE_STATIC} component={Profile} />
-          <Route exact path={NEWS_FEED_STATIC} component={NewsFeed} />
+          <Route exact path={PROFILE} component={Profile} />
+          <Route exact path={NEWS_FEED} component={NewsFeed} />
           <Route component={NotFound404} />
         </Switch>
       </Layout>

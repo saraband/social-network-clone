@@ -8,6 +8,7 @@ import schema from './schema'
 import log from './log'
 
 const app = express()
+app.disable('x-powered-by-x')
 
 /* GRAPHQL */
 app.use(cors())
