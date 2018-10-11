@@ -32,6 +32,15 @@ module.exports = {
   },
   module: {
     rules: [
+      /*  This is to avoid error:
+      **  `ReferenceError: require is not defined`
+      **  See thread here: https://github.com/aws-amplify/amplify-js/issues/686#issuecomment-387710340
+       */
+			{
+				test: /\.mjs$/,
+				include: /node_modules/,
+				type: "javascript/auto",
+			},
       {
         test: /\.js$/,
         exclude: /node_modules/,

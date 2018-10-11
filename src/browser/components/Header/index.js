@@ -8,8 +8,9 @@ import styled from 'styled-components'
 import COLORS from 'CONSTANTS/Colors'
 import { Flex } from 'MISC/Styles'
 import {
-  NEWS_FEED_STATIC,
-  PROFILE
+  NEWS_FEED,
+  PROFILE,
+  addParamsToUrl
 } from 'ROUTES'
 import Logo from 'ICONS/Logo'
 
@@ -35,17 +36,18 @@ const ProfileSlot = styled.div`
 
 export default class Header extends PureComponent {
   render() {
-    const MY_PROFILE = PROFILE({
-      userId: 42
-    })
+    // NSFW
+    return null;
 
-    console.log(MY_PROFILE)
+    const MY_PROFILE = addParamsToUrl(PROFILE, {
+      userId: 'naZ2Ty'
+    })
 
     return(
       <StyledHeader>
         <Flex align='center'>
           <Logo height={30} />
-          <HomeLink to={NEWS_FEED_STATIC}>Social Network</HomeLink>
+          <HomeLink to={NEWS_FEED}>Social Network</HomeLink>
         </Flex>
         <ProfileSlot>
           <Link to={MY_PROFILE}>Your profile</Link>

@@ -34,7 +34,6 @@ export default class App extends Component {
     /* MAIN ROUTES */
     return(
       <Layout>
-        <Chat />
         <Switch>
           <Route exact path={PROFILE} component={Profile} />
           <Route exact path={NEWS_FEED} component={NewsFeed} />
