@@ -10,31 +10,35 @@ export default ({
 
 	switch (where) {
 		case 'before':
-			renderComponentWithLoader = () => (
+			renderComponentWithLoader = (props) => (
 				<React.Fragment>
 					<Loader {...loaderProps} />
-					<Component {...rest} />
+					<Component {...props} />
 				</React.Fragment>
 			)
+			break;
 
 		case 'after':
-			renderComponentWithLoader = () => (
+			renderComponentWithLoader = (props) => (
 				<React.Fragment>
-					<Component {...rest} />
+					<Component {...props} />
 					<Loader {...loaderProps} />
 				</React.Fragment>
 			)
+			break;
 
 		case 'inside':
-			renderComponentWithLoader = () => (
-				<Component {...rest}>
+			renderComponentWithLoader = (props) => (
+				<Component {...props}>
 					<Loader {...loaderProps} />
 				</Component>
 			)
+			break;
 
 		default:
 			console.error(`'${where}' is not a possible option for property 'where' in withLoader HOC`)
-			renderComponentWithLoader = () => <Component {...rest} />
+			renderComponentWithLoader = (props) => <Component {...props} />
+			break;
 	}
 
 	return class extends PureComponent {
@@ -47,7 +51,7 @@ export default ({
 			if (!isLoading)
 				return <Component {...rest} />
 
-			renderComponentWithLoader();
+			return renderComponentWithLoader(rest);
 		}
 	}
 }

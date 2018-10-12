@@ -10,7 +10,7 @@ import withLoader from 'HOCS/WithLoader'
 
 const ComponentWithLoader = withLoader({
   loaderProps: { color: 'red' },
-  where: 'before'
+  where: 'after'
 })(
   () => <p>Test component</p>
 )
