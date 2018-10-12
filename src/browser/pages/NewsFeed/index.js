@@ -6,6 +6,14 @@ import Post from 'COMPONENTS/Post'
 import Loader from 'COMPONENTS/Loaders/PlainLoader'
 import LogoLoader from 'COMPONENTS/Loaders/LogoLoader';
 import COLORS from 'CONSTANTS/Colors';
+import withLoader from 'HOCS/WithLoader'
+
+const ComponentWithLoader = withLoader({
+  loaderProps: { color: 'red' },
+  where: 'before'
+})(
+  () => <p>Test component</p>
+)
 
 /* QUERIES */
 const GET_POSTS_LIST = gql`
@@ -49,6 +57,7 @@ export default class Profile extends React.Component {
           size={200}
           color={COLORS.GREY}
           />
+        <ComponentWithLoader isLoading={true}/>
       </StyledNewsFeed>
     )
   }
