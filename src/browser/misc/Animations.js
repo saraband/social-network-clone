@@ -21,3 +21,16 @@ export const Rotate = keyframes`
     transform: rotate(359deg);
   }
 `
+
+export const Pulse = keyframes`
+  0% {
+  	opacity: 1;
+  	transform: scale3d(1, 1, 1);
+  } 33% {
+  	opacity: 0.3;
+  	transform: scale3d(1.2, 1.2, 1);
+  } 100% {
+  	opacity: 1;
+  	transform: scale3d(1, 1, 1);
+  }
+`

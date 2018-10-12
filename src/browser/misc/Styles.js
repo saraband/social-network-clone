@@ -10,3 +10,8 @@ export const Flex = styled.div`
   ${props => props.justify ? `justify-content: ${props.justify};` : ''}
   ${props => props.align ? `align-items: ${props.align};` : ''}
 `
+
+export const FlexCenterAll = styled(Flex)`
+	justify-content: center;
+	align-items: center;
+`

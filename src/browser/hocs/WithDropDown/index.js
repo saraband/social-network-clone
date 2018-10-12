@@ -3,6 +3,7 @@
 **  Takes the DropDown component, returns a function
 **  That takes the component to display and finally returns
 **  The generated component prototype
+**  Ex: withDropDown(DropDownComponent)(Component)
 */
 
 import React from 'react'

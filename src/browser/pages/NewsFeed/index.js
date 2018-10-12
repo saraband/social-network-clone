@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import COLORS from 'CONSTANTS/Colors'
 import Post from 'COMPONENTS/Post'
-import Button from 'COMPONENTS/Form/Buttons/PlainButton'
 import Loader from 'COMPONENTS/Loaders/PlainLoader'
+import LogoLoader from 'COMPONENTS/Loaders/LogoLoader';
+import COLORS from 'CONSTANTS/Colors';
 
 /* QUERIES */
 const GET_POSTS_LIST = gql`
@@ -33,6 +33,7 @@ export default class Profile extends React.Component {
     return(
       <StyledNewsFeed>
         <h3>News feed</h3>
+        {/*
         <Query query={GET_POSTS_LIST}>
           {({ loading, error, data }) => {
             if(loading) return <p>Loading...</p>
@@ -43,6 +44,11 @@ export default class Profile extends React.Component {
             ))
           }}
         </Query>
+        */}
+        <LogoLoader
+          size={200}
+          color={COLORS.GREY}
+          />
       </StyledNewsFeed>
     )
   }
