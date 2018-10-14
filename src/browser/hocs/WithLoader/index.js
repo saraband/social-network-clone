@@ -1,3 +1,16 @@
+/*
+**  Loader HOC
+**  Allows a component to have a loader
+**  showing whenever its prop `isLoading` is set
+**  The loader can be displayed before, after or inside the component
+**
+**  Ex: withLoader({
+**    loader: LoaderComponent,
+**    loaderProps: { color: blue },
+**    where: 'after'
+**  })(Component)
+*/
+
 import React, { PureComponent } from 'react'
 import PlainLoader from 'COMPONENTS/Loaders/PlainLoader';
 
@@ -6,11 +19,11 @@ export default ({
   loaderProps = {},
   where = 'before'
 }) => Component => {
-  let renderComponentWithLoader;
 
+  let ComponentWithLoader;
   switch (where) {
     case 'before':
-      renderComponentWithLoader = (props) => (
+      ComponentWithLoader = (props) => (
         <React.Fragment>
           <Loader {...loaderProps} />
           <Component {...props} />
@@ -19,7 +32,7 @@ export default ({
       break;
 
     case 'after':
-      renderComponentWithLoader = (props) => (
+      ComponentWithLoader = (props) => (
         <React.Fragment>
           <Component {...props} />
           <Loader {...loaderProps} />
@@ -28,7 +41,7 @@ export default ({
       break;
 
     case 'inside':
-      renderComponentWithLoader = (props) => (
+      ComponentWithLoader = (props) => (
         <Component {...props}>
           <Loader {...loaderProps} />
         </Component>
@@ -37,7 +50,7 @@ export default ({
 
     default:
       console.error(`'${where}' is not a possible option for property 'where' in withLoader HOC`)
-      renderComponentWithLoader = (props) => <Component {...props} />
+      ComponentWithLoader = (props) => <Component {...props} />
       break;
   }
 
@@ -51,7 +64,7 @@ export default ({
       if (!isLoading)
         return <Component {...rest} />
 
-      return renderComponentWithLoader(rest);
+      return <ComponentWithLoader {...rest} />;
     }
   }
 }

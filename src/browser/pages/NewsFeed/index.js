@@ -6,14 +6,6 @@ import Post from 'COMPONENTS/Post'
 import Loader from 'COMPONENTS/Loaders/PlainLoader'
 import LogoLoader from 'COMPONENTS/Loaders/LogoLoader';
 import COLORS from 'CONSTANTS/Colors';
-import withLoader from 'HOCS/WithLoader'
-
-const ComponentWithLoader = withLoader({
-  loaderProps: { color: 'red' },
-  where: 'after'
-})(
-  () => <p>Test component</p>
-)
 
 /* QUERIES */
 const GET_POSTS_LIST = gql`
@@ -41,10 +33,15 @@ export default class Profile extends React.Component {
     return(
       <StyledNewsFeed>
         <h3>News feed</h3>
-        {/*
         <Query query={GET_POSTS_LIST}>
           {({ loading, error, data }) => {
-            if(loading) return <p>Loading...</p>
+            if(loading) return (
+              <LogoLoader
+                size={200}
+                color={COLORS.GREY}
+                />
+            )
+
             if(error) return <p>Error</p>
 
             return data.postList.map(postData => (
@@ -52,12 +49,6 @@ export default class Profile extends React.Component {
             ))
           }}
         </Query>
-        */}
-        <LogoLoader
-          size={200}
-          color={COLORS.GREY}
-          />
-        <ComponentWithLoader isLoading={true}/>
       </StyledNewsFeed>
     )
   }

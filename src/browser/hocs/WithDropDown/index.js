@@ -1,8 +1,8 @@
 /*
 **  DropDown HOC
-**  Takes the DropDown component, returns a function
-**  That takes the component to display and finally returns
-**  The generated component prototype
+**  Takes a component and a dropdown component
+**  and makes the component display the dropdown on click
+**
 **  Ex: withDropDown(DropDownComponent)(Component)
 */
 
