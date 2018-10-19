@@ -2,8 +2,8 @@ import Sequelize from 'sequelize'
 import _ from 'lodash'
 import Faker from 'faker'
 
-const Conn = new Sequelize(
-  'social-network-clone',
+const db = new Sequelize(
+  'postgres',
   'postgres',
   'password',
   {
@@ -12,14 +12,14 @@ const Conn = new Sequelize(
   }
 )
 
-const User =  Conn.define('user', {
+const User =  db.define('user', {
   username: {
     type: Sequelize.STRING,
     allowNull: false
   }
 })
 
-const Post = Conn.define('post', {
+const Post = db.define('post', {
   title: {
     type: Sequelize.STRING,
     allowNull: false
@@ -35,7 +35,7 @@ User.hasMany(Post)
 Post.belongsTo(User)
 
 /* MOCK DATA */
-Conn.sync({force: true}).then(() => {
+db.sync({force: true}).then(() => {
   _.times(10, () => {
     return User.create({
       username: Faker.name.firstName()
@@ -49,4 +49,4 @@ Conn.sync({force: true}).then(() => {
 })
 
 
-export default Conn
+export default db
